@@ -28,3 +28,18 @@ $ sudo userdel -r <name>
 
 ### to login into other users 
 $ sudo login 
+
+
+### Rasp config 
+$ sudo raspi-config 
+
+
+### java on pi 
+$ sudo apt install openjdk-8-jdk openjdk-8-jre 
+
+### for mulitple verion selection 
+$ sudo update-alternatives --config java 
+
+
+### remote desktop for pi using 
+- https://www.realvnc.com/en/connect/download/viewer/
