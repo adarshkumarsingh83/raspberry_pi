@@ -37,9 +37,40 @@ $ sudo raspi-config
 ### java on pi 
 $ sudo apt install openjdk-8-jdk openjdk-8-jre 
 
+### maven on pi 
+	- ssh to the pi 
+	- open maven page and copy the link of the maven download "https://apache.osuosl.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz"
+	- use cmd 
+		- wget https://apache.osuosl.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+		- cd /opt 
+		- sudo tar -xzvf /home/pi/apache-maven-xxx-bin.tar.gz
+	- add into the path 
+		- $ sudo nano /etc/profile.d/maven.sh 
+			```
+              M2_HOME='/opt/pache-maven-xxx'
+              PATH=$PATH:$M2_HOME/bin
+			```
+	- sudo reboot 
+	- mvn -version 
 ### for mulitple verion selection 
 $ sudo update-alternatives --config java 
 
 
+### shoutdown pi 
+- sudo shutdown now 
+
+### reboot pi 
+- sudo reboot now 
+
+
 ### remote desktop for pi using 
 - https://www.realvnc.com/en/connect/download/viewer/
+
+### ssh to the pi from mac 
+	- To find ip of pi 
+	- $ ifconfig 
+$ ssh pi@1<92.168.0.xx>
+- for exit 
+	- exit 
+
+
