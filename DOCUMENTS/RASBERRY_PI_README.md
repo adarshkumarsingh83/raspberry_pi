@@ -1,4 +1,7 @@
 
+### To update pi 
+$ sudo apt update 
+
 ### find ip of the pi 
 $ ifconfig 
 
@@ -54,6 +57,9 @@ $ sudo apt install openjdk-8-jdk openjdk-8-jre
 	- mvn -version 
 ### for mulitple verion selection 
 $ sudo update-alternatives --config java 
+
+### git on pi 
+$ sudo apt-get install git-core 
 
 
 ### shoutdown pi 

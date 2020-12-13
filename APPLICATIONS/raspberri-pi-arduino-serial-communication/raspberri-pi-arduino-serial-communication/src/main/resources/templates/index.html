@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+<h2>
+    <span th:text="${message}"></span>
+</h2>
+
+<div class="container">
+    <h2>led configuration</h2>
+    <p>table for controlling led lights</p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>LED TYPE</th>
+            <th>ON OPERATION</th>
+            <th>OFF OPERATION</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>RED LED</td>
+            <td><a href="/led-on/red">ON</a> </td>
+            <td><a href="/led-off/red">OFF</a> </td>
+        </tr>
+        <tr>
+            <td>GREEN LED</td>
+            <td><a href="/led-on/green">ON</a> </td>
+            <td><a href="/led-off/green">OFF</a> </td>
+        </tr>
+        <tr>
+            <td>YELLOW LED</td>
+            <td><a href="/led-on/yellow">ON</a> </td>
+            <td><a href="/led-off/yellow">OFF</a> </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
