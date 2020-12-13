@@ -3,8 +3,13 @@ package com.espark.adarsh.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+
 import com.fazecast.jSerialComm.SerialPort;
+
 import javax.annotation.PostConstruct;
 
 @Slf4j
@@ -31,7 +36,14 @@ public class CommunicationService {
             log.info("Serial Port is open for communication");
             serialPort.getOutputStream().write(("ON_" + ledName.toUpperCase()).getBytes());
             serialPort.getOutputStream().flush();
-            return ledName + " led is on";
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                log.error("CommunicationService.lightLed()"+e.getLocalizedMessage());
+            }
+            InputStream inputStream = serialPort.getInputStream();
+            String responseString = getString(inputStream);
+            return  responseString;
         } else {
             log.error("Serial Port is not open for communication");
             return "device is not reachable to provide cmd";
@@ -44,10 +56,28 @@ public class CommunicationService {
             log.info("Serial Port is open for communication");
             serialPort.getOutputStream().write(("OFF_" + ledName.toUpperCase()).getBytes());
             serialPort.getOutputStream().flush();
-            return ledName + " led is off";
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                log.error("CommunicationService.lightLed()"+e.getLocalizedMessage());
+            }
+            InputStream inputStream = serialPort.getInputStream();
+            String responseString = getString(inputStream);
+            return  responseString;
         } else {
             log.error("Serial Port is not open for communication");
             return "device is not reachable to provide cmd";
         }
+    }
+
+
+    public String getString(InputStream inputStream) throws IOException {
+        int ch=0;
+        StringBuilder sb = new StringBuilder();
+        while (inputStream.available() != 0) {
+            ch = inputStream.read();
+            sb.append((char) ch);
+        }
+        return sb.toString();
     }
 }
