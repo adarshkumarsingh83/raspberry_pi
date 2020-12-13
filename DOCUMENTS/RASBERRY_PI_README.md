@@ -62,6 +62,10 @@ $ sudo update-alternatives --config java
 $ sudo apt-get install git-core 
 
 
+### To enable ssh in i 
+$ sudo systemctl enable ssh
+$ sudo systemctl start ssh
+
 ### shoutdown pi 
 - sudo shutdown now 
 
