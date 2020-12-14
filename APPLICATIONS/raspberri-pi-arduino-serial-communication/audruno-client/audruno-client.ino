@@ -1,5 +1,4 @@
 
-String userOption;
 
 const int RED_PIN = 13;
 const int GREEN_PIN = 12;
@@ -8,6 +7,8 @@ const int YELLOW_PIN = 11;
 int RED_PIN_STATE = LOW;
 int GREEN_PIN_STATE = LOW;
 int YELLOW_PIN_STATE = LOW;
+
+String userOption;
 
 void setup() {
   Serial.begin(9600);

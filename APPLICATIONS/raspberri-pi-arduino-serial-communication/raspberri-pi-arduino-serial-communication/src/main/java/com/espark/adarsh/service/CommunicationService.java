@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 import com.fazecast.jSerialComm.SerialPort;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 
@@ -32,47 +33,57 @@ public class CommunicationService {
 
 
     public String lightLed(String ledName) throws IOException {
-        if (this.serialPort.openPort()) {
-            log.info("Serial Port is open for communication");
-            serialPort.getOutputStream().write(("ON_" + ledName.toUpperCase()).getBytes());
-            serialPort.getOutputStream().flush();
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                log.error("CommunicationService.lightLed()"+e.getLocalizedMessage());
+        if (!StringUtils.isEmpty(ledName)) {
+            if (this.serialPort.openPort()) {
+                log.info("Serial Port is open for communication");
+                serialPort.getOutputStream().write(("ON_" + ledName.toUpperCase()).getBytes());
+                serialPort.getOutputStream().flush();
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    log.error("CommunicationService.lightLed()" + e.getLocalizedMessage());
+                }
+                InputStream inputStream = serialPort.getInputStream();
+                String responseString = getString(inputStream);
+                return responseString;
+            } else {
+                log.error("Serial Port is not open for communication");
+                return "device is not reachable to provide cmd";
             }
-            InputStream inputStream = serialPort.getInputStream();
-            String responseString = getString(inputStream);
-            return  responseString;
         } else {
-            log.error("Serial Port is not open for communication");
-            return "device is not reachable to provide cmd";
+            log.error("ledName is empty or null");
+            return "ledName is empty or null";
         }
 
     }
 
     public String offLed(String ledName) throws IOException {
-        if (this.serialPort.openPort()) {
-            log.info("Serial Port is open for communication");
-            serialPort.getOutputStream().write(("OFF_" + ledName.toUpperCase()).getBytes());
-            serialPort.getOutputStream().flush();
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                log.error("CommunicationService.lightLed()"+e.getLocalizedMessage());
+        if (!StringUtils.isEmpty(ledName)) {
+            if (this.serialPort.openPort()) {
+                log.info("Serial Port is open for communication");
+                serialPort.getOutputStream().write(("OFF_" + ledName.toUpperCase()).getBytes());
+                serialPort.getOutputStream().flush();
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    log.error("CommunicationService.lightLed()" + e.getLocalizedMessage());
+                }
+                InputStream inputStream = serialPort.getInputStream();
+                String responseString = getString(inputStream);
+                return responseString;
+            } else {
+                log.error("Serial Port is not open for communication");
+                return "device is not reachable to provide cmd";
             }
-            InputStream inputStream = serialPort.getInputStream();
-            String responseString = getString(inputStream);
-            return  responseString;
         } else {
-            log.error("Serial Port is not open for communication");
-            return "device is not reachable to provide cmd";
+            log.error("ledName is empty or null");
+            return "ledName is empty or null";
         }
     }
 
 
     public String getString(InputStream inputStream) throws IOException {
-        int ch=0;
+        int ch = 0;
         StringBuilder sb = new StringBuilder();
         while (inputStream.available() != 0) {
             ch = inputStream.read();
