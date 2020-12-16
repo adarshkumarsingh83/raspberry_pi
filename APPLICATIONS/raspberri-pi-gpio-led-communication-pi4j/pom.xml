@@ -11,9 +11,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.espark.adarsh</groupId>
-	<artifactId>raspberri-pi-arduino-serial-communication</artifactId>
+	<artifactId>raspberri-pi-gpio-led-communication-pi4j</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>raspberri-pi-arduino-serial-communication</name>
+	<name>raspberri-pi-gpio-led-communication-pi4j</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -44,17 +44,24 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.fazecast</groupId>
-			<artifactId>jSerialComm</artifactId>
-			<version>1.3.11</version>
-		</dependency>
-
-		<dependency>
 			<groupId>com.pi4j</groupId>
 			<artifactId>pi4j-core</artifactId>
-			<version>1.1</version>
+			<version>1.3-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>oss-snapshots-repo</id>
+			<name>Sonatype OSS Maven Repository</name>
+			<url>https://oss.sonatype.org/content/groups/public</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
 
 	<build>
 		<plugins>
