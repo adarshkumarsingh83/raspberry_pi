@@ -5,8 +5,6 @@ $ sudo apt update
 ### find ip of the pi 
 $ ifconfig 
 
-### to pi config 
-$ sudo 
 
 ### shout down now and reboot 
 $ suso shutdown -h now - r 
@@ -15,8 +13,7 @@ $ suso shutdown -h now - r
 $ sudo halt
 
 ### ssh to the pi from other pc 
-$ 
-
+$ sudo ssh pi@<ip address>
 
 ### adding new users 
 $ sudo adduser <name>
@@ -83,4 +80,5 @@ $ ssh pi@1<92.168.0.xx>
 - for exit 
 	- exit 
 
-
+### To know the puns on pi 
+$ sudo pinout 
