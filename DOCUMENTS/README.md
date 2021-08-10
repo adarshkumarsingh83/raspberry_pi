@@ -1,4 +1,6 @@
 
+
+
 ### To update pi 
 $ sudo apt update 
 
@@ -82,3 +84,11 @@ $ ssh pi@1<92.168.0.xx>
 
 ### To know the puns on pi 
 $ sudo pinout 
+
+
+![img](./4channel-bidirection-logic-convertor.jpg)
+
+
+![img](./raspberripi.png)
+
+![img](./raspberry-pi-2-pinouts.jpg)
