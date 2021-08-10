@@ -1,10 +1,10 @@
 
 
-![img](./4channel-bidirection-logic-convertor.jpg)
+![img](./image/4channel-bidirection-logic-convertor.jpg)
 
-![img](./raspberripi.png)
+![img](./image/raspberripi.png)
 
-![img](./raspberry-pi-2-pinouts.jpg)
+![img](./image/raspberry-pi-2-pinouts.jpg)
 
 
 ----
